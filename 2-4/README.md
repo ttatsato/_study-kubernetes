@@ -1,6 +1,4 @@
 # はじめてみるKubernetes
-# 前提
-kubectlが使える
 
 # ゴール
 nginxのコンテナImageからコンテナを3つ起動し、
@@ -13,7 +11,6 @@ LoadBalancerを作成するとサービス公開に必要なIPアドレスが払
 それ以外におmコンテナの死活監視、セルフヒーリング、ロードバランサのメンバ変更といった
 コンテナ運用に必要なことは全てKubernetesが自動的に行なってくれる。
 
-# 手順
 
 ```shell script
 # nginxコンテナ３つからなるグループを作成し、myappというラベルつけておく
@@ -53,7 +50,17 @@ kubectl get pods
 OK
 
 ## ロードバランサーが設定されて、外部にサービスが公開されているか？
-http://localhost:80
+### IPアドレスを確認
+ロードバランサーが設定されると、コンテナにETERNAL-IPが紐づく。
+このETENAL-IPアドレスにhttp接続することができる。
+
+```shell script
+kubectl get service myapp
+# NAME    TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)        AGE
+# myapp   LoadBalancer   10.51.254.159   35.221.113.159   80:31051/TCP   57s
+```
+### httpアクセス
+http://<EXTERNAL-IP>:80
 にアクセス。
 「It Works」とテキストが表示されれば、OK
 
