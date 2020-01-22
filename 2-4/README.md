@@ -62,5 +62,5 @@ kubectl get service myapp
 ### httpアクセス
 http://<EXTERNAL-IP>:80
 にアクセス。
-「It Works」とテキストが表示されれば、OK
+「Welcome to nginx!」とテキストが表示されれば、OK
 
