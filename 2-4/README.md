@@ -60,7 +60,7 @@ kubectl get service myapp
 # myapp   LoadBalancer   10.51.254.159   35.221.113.159   80:31051/TCP   57s
 ```
 ### httpアクセス
-http://<EXTERNAL-IP>:80
+http://{EXTERNAL-IP}:80
 にアクセス。
 「Welcome to nginx!」とテキストが表示されれば、OK
 
